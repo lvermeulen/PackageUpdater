@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PackageTool": {
+      "commandName": "Project",
+      "commandLineArgs": "update-package --name Be.Vlaanderen.Basisregisters.Api --version 99.1.0 --path c:\\vlrepo --strategy Paket --whatif"
+    }
+  }
+}
