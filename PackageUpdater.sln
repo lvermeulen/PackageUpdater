@@ -24,6 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		appveyor.yml = appveyor.yml
 		global.json = global.json
 		README.md = README.md
+		LICENSE = LICENSE
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageUpdater.DotNet", "src\PackageUpdater.DotNet\PackageUpdater.DotNet.csproj", "{2630CC43-2824-43BD-BD7B-3DACDAE6BE7F}"
@@ -34,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageUpdater.DotNet.Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageUpdater.DotNetFramework.Tests", "test\PackageUpdater.DotNetFramework.Tests\PackageUpdater.DotNetFramework.Tests.csproj", "{2684C024-5287-4326-97C6-18B82D0C6CDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageUpdater.Abstractions.Tests", "test\PackageUpdater.Abstractions.Tests\PackageUpdater.Abstractions.Tests.csproj", "{C6AA6036-000C-4E49-ADC5-DC3F4A545BFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageUpdater.Abstractions.Tests", "test\PackageUpdater.Abstractions.Tests\PackageUpdater.Abstractions.Tests.csproj", "{C6AA6036-000C-4E49-ADC5-DC3F4A545BFD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageTool", "src\PackageTool\PackageTool.csproj", "{14CDEEBC-823D-43A5-B03C-322487D1BD9D}"
 EndProject
