@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32505.426
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageUpdater.Paket", "src\PackageUpdater.Paket\PackageUpdater.Paket.csproj", "{62558AA5-F620-4B4D-A970-5D25D687C540}"
 EndProject
@@ -23,8 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		appveyor.yml = appveyor.yml
 		global.json = global.json
-		README.md = README.md
 		LICENSE = LICENSE
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageUpdater.DotNet", "src\PackageUpdater.DotNet\PackageUpdater.DotNet.csproj", "{2630CC43-2824-43BD-BD7B-3DACDAE6BE7F}"
@@ -38,6 +38,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageUpdater.Abstractions.Tests", "test\PackageUpdater.Abstractions.Tests\PackageUpdater.Abstractions.Tests.csproj", "{C6AA6036-000C-4E49-ADC5-DC3F4A545BFD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageTool", "src\PackageTool\PackageTool.csproj", "{14CDEEBC-823D-43A5-B03C-322487D1BD9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageUpdater.GitHub", "src\PackageUpdater.GitHub\PackageUpdater.GitHub.csproj", "{0070BF87-BF45-4409-B20E-028789D56A18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageUpdater.GitHub.Tests", "test\PackageUpdater.GitHub.Tests\PackageUpdater.GitHub.Tests.csproj", "{C87D08C0-E948-4F69-B771-72DEAA5633D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +89,14 @@ Global
 		{14CDEEBC-823D-43A5-B03C-322487D1BD9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14CDEEBC-823D-43A5-B03C-322487D1BD9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14CDEEBC-823D-43A5-B03C-322487D1BD9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0070BF87-BF45-4409-B20E-028789D56A18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0070BF87-BF45-4409-B20E-028789D56A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0070BF87-BF45-4409-B20E-028789D56A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0070BF87-BF45-4409-B20E-028789D56A18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C87D08C0-E948-4F69-B771-72DEAA5633D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C87D08C0-E948-4F69-B771-72DEAA5633D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C87D08C0-E948-4F69-B771-72DEAA5633D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C87D08C0-E948-4F69-B771-72DEAA5633D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +112,8 @@ Global
 		{2684C024-5287-4326-97C6-18B82D0C6CDE} = {F0C7DEC0-6590-4CF1-AE66-0C3C0073AFBC}
 		{C6AA6036-000C-4E49-ADC5-DC3F4A545BFD} = {F0C7DEC0-6590-4CF1-AE66-0C3C0073AFBC}
 		{14CDEEBC-823D-43A5-B03C-322487D1BD9D} = {20D87E64-0973-4F0C-B6A4-AD0798D65313}
+		{0070BF87-BF45-4409-B20E-028789D56A18} = {20D87E64-0973-4F0C-B6A4-AD0798D65313}
+		{C87D08C0-E948-4F69-B771-72DEAA5633D3} = {F0C7DEC0-6590-4CF1-AE66-0C3C0073AFBC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7557A71E-9F9F-4EA7-93E7-ADA4A424ADDF}

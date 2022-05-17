@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace PackageUpdater.Abstractions
 {
@@ -6,11 +7,12 @@ namespace PackageUpdater.Abstractions
     {
         public string Path { get; }
         public IEnumerable<string> DependenciesFiles { get; }
+        public IEnumerable<Dependency> Dependencies { get; set; }
 
-        public Repository(string path, IEnumerable<string> dependenciesFiles)
+        public Repository(string path, IEnumerable<string> dependenciesFiles = null)
         {
             Path = path;
-            DependenciesFiles = dependenciesFiles;
+            DependenciesFiles = dependenciesFiles ?? Enumerable.Empty<string>();
         }
 
         public override string ToString() => $"Path: {Path}, DependenciesFiles: {string.Join(", ", DependenciesFiles)}";

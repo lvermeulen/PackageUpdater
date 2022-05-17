@@ -23,7 +23,8 @@ namespace PackageTool
                         CommandTypes = new []
                         {
                             typeof(FindRepositoriesCommand),
-                            typeof(UpdatePackageCommand)
+                            typeof(UpdatePackageCommand),
+                            typeof(ForEachCommand)
                         }
                     });
                     Environment.Exit(1);
