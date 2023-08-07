@@ -1,53 +1,48 @@
-﻿using System.Linq;
-using PackageUpdater.Abstractions.CommandInput;
+﻿using System.IO;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
+using PackageUpdater.Commands.DependencyGraph;
+using QuikGraph.Algorithms;
 using Xunit;
 using Xunit.Abstractions;
-using System.Threading;
-using PackageUpdater.Abstractions;
-using QuikGraph.Algorithms;
 
-namespace PackageUpdater.Paket.Tests
+namespace PackageUpdater.Paket.Tests;
+
+public class PaketBuildDependencyGraphShould
 {
-    public class PaketBuildDependencyGraphShould
+    private readonly ITestOutputHelper _testOutputHelper;
+
+    public PaketBuildDependencyGraphShould(ITestOutputHelper testOutputHelper)
     {
-        private readonly ITestOutputHelper _testOutputHelper;
+        _testOutputHelper = testOutputHelper;
+    }
 
-        public PaketBuildDependencyGraphShould(ITestOutputHelper testOutputHelper)
+    [Theory]
+    [InlineData("")]
+    public async Task BuildDependencyGraph(string _)
+    {
+        var path = Path.GetTempPath();
+        var input = new DependencyGraphCommandInput(path);
+        var grapher = new PaketBuildDependencyGraph();
+        var graph = await grapher.BuildDependencyGraph(input, CancellationToken.None);
+
+        if (graph.Edges.Any())
         {
-            _testOutputHelper = testOutputHelper;
-        }
+            //_testOutputHelper.WriteLine("Dependencies exist between the following repositories:");
+            //foreach (var edge in graph.Edges.Distinct())
+            //{
+            //    _testOutputHelper.WriteLine($"\t{string.Join(", ", edge.Target.DependenciesFiles)}");
+            //}
 
-        [Theory]
-        [InlineData(@"C:\vlrepo")]
-        public async Task BuildDependencyGraph(string path)
-        {
-            var input = new DependencyGraphCommandInput
+            var vertices = graph.TopologicalSort();
+            _testOutputHelper.WriteLine("\nTopological sort:");
+            foreach (var vertex in vertices)
             {
-                PathFlag = path,
-                StrategyFlag = UpdatePackageStrategy.Paket
-            };
-
-            var grapher = new PaketBuildDependencyGraph();
-            var graph = await grapher.BuildDependencyGraph(input, CancellationToken.None);
-
-            if (graph.Edges.Any())
-            {
-                //_testOutputHelper.WriteLine("Dependencies exist between the following repositories:");
-                //foreach (var edge in graph.Edges.Distinct())
-                //{
-                //    _testOutputHelper.WriteLine($"\t{string.Join(", ", edge.Target.DependenciesFiles)}");
-                //}
-
-                var vertices = graph.TopologicalSort();
-                _testOutputHelper.WriteLine("\nTopological sort:");
-                foreach (var vertex in vertices)
-                {
-                    _testOutputHelper.WriteLine(vertex.Path);
-                }
+                _testOutputHelper.WriteLine(vertex.Path);
             }
-
-            Assert.NotNull(graph);
         }
+
+        Assert.NotNull(graph);
     }
 }

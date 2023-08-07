@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
 	<PackAsTool>true</PackAsTool>
 	<ToolCommandName>PackageTool</ToolCommandName>
 	<PackageOutputPath>./nupkg</PackageOutputPath>
@@ -13,21 +12,28 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-    <PackageReference Include="Oakton" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PackageUpdater.Abstractions\PackageUpdater.Abstractions.csproj" />
-    <ProjectReference Include="..\PackageUpdater.DotNetFramework\PackageUpdater.DotNetFramework.csproj" />
-    <ProjectReference Include="..\PackageUpdater.DotNet\PackageUpdater.DotNet.csproj" />
-    <ProjectReference Include="..\PackageUpdater.Paket\PackageUpdater.Paket.csproj" />
+    <ProjectReference Include="..\PackageUpdater.Commands.DependencyGraph\PackageUpdater.Commands.DependencyGraph.csproj" />
+    <ProjectReference Include="..\PackageUpdater.Commands.FindRepositories\PackageUpdater.Commands.FindRepositories.csproj" />
+    <ProjectReference Include="..\PackageUpdater.Commands.ForEach\PackageUpdater.Commands.ForEach.csproj" />
+    <ProjectReference Include="..\PackageUpdater.Commands.UpdatePackage\PackageUpdater.Commands.UpdatePackage.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\" />
   </ItemGroup>
 
 </Project>

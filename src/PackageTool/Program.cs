@@ -1,38 +1,33 @@
-﻿using System;
+﻿using System.CommandLine;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Oakton;
-using Oakton.Help;
-using PackageTool.Commands;
+using PackageTool.Extensions;
+using PackageUpdater.Commands.DependencyGraph;
+using PackageUpdater.Commands.FindRepositories;
+using PackageUpdater.Commands.ForEach;
+using PackageUpdater.Commands.UpdatePackage;
 
-[assembly:OaktonCommandAssembly]
+namespace PackageTool;
 
-namespace PackageTool
+public static class Program
 {
-    public static class Program
+    public static async Task<int> Main(string[] args)
     {
-        public static Task<int> Main(string[] args) => CreateHostBuilder(args)
-            .ConfigureHostConfiguration(_ =>
-            {
-                if (args.Length <= 1)
-                {
-                    new HelpCommand().Execute(new HelpInput
-                    {
-                        AppName = nameof(PackageTool),
-                        CommandTypes = new []
-                        {
-                            typeof(FindRepositoriesCommand),
-                            typeof(UpdatePackageCommand),
-                            typeof(ForEachCommand)
-                        }
-                    });
-                    Environment.Exit(1);
-                }
-            })
-            .RunOaktonCommands(args);
+        var rootCommand = new RootCommand("Perform operations on multiple repositories.");
+        rootCommand.AddCommandsFromAssemblyOf<DependencyGraphCommand>();
+        rootCommand.AddCommandsFromAssemblyOf<FindRepositoriesCommand>();
+        rootCommand.AddCommandsFromAssemblyOf<ForEachCommand>();
+        rootCommand.AddCommandsFromAssemblyOf<UpdatePackageCommand>();
 
-        public static IHostBuilder CreateHostBuilder(string[] args) => Host.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((_, services) => services.AddJsonFile("appsettings.json"));
+        if (args.Length == 0)
+        {
+            args = new [] { "--help" };
+        }
+
+        return await rootCommand.InvokeAsync(args);
     }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) => Host.CreateDefaultBuilder(args)
+        .ConfigureAppConfiguration((_, services) => services.AddJsonFile("appsettings.json"));
 }

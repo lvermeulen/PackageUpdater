@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PackageUpdater.Abstractions\PackageUpdater.Abstractions.csproj" />
+    <ProjectReference Include="..\PackageUpdater.Commands.FindRepositories\PackageUpdater.Commands.FindRepositories.csproj" />
+  </ItemGroup>
+
+</Project>
