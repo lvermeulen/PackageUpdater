@@ -1,8 +1,7 @@
-﻿namespace PackageUpdater.GitHub
+﻿namespace PackageUpdater.GitHub;
+
+public class GitHubRepositoryOptions
 {
-    public class GitHubRepositoryOptions
-    {
-        public string Organization { get; set; }
-        public string Topic { get; set; }
-    }
+    public string? Organization { get; set; }
+    public string? Topic { get; set; }
 }

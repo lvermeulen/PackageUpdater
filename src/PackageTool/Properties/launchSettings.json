@@ -2,7 +2,7 @@
   "profiles": {
     "PackageTool": {
       "commandName": "Project",
-      "commandLineArgs": "for-each --path c:\\vlrepo --action test.sh"
+      "commandLineArgs": "update-package --help"
     }
   }
 }
